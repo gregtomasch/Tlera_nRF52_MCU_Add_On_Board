@@ -27,6 +27,9 @@ The example Arduino sketches in this repository include the necessary infrastruc
 OTA firmware update is fully functional for STL32L4-based devices but not for Teensy3.X products. At the time of writing this wiki, there is no known method for transferring firmware image data from an Arduino sketch to the bootable portion of the Teensy MCU's flash memory. If this capability were to be developed OTA firmware updates would be possible for the Teensy3.X products as well.
 
 ## Software
-It is recommended to read the "STM32L4_BLE_Bridge_and_OTA_Wiki.pdf" document in this repository for instructions on how to use the Tlera nRF52832 add-on boards and software examples. Practical considerations of using both the Arduino MCU sketches and nRF52832 firmware are discussed. This section will focus more on 
+It is recommended to read the "STM32L4_BLE_Bridge_and_OTA_Wiki.pdf" document in this repository for instructions on how to use the Tlera nRF52832 add-on boards and software examples. Practical considerations of using both the Arduino MCU sketches and nRF52832 firmware are discussed there. This section will focus more on using the example sketches as an infrastructure to develop new BLE-connected Arduino applications and how to use the nRF52832 firmware source code in the Nordic SDK to make user-specific modifications.
 
 ### Arduino Sketches
+This repository contains example Arduino sketches for using the Tlera nRF52832 add-on boards on both "remote" and "host" MCU development boards. The sketches support "Dragonfly", "Butterfly" and Teensy3.X MCU products. The names should make it obvious which sketches support which boards. All sketches have been successfully tested with their respective products. The Teensy3.X sketches have been tested with the Teensy 3.2 and 3.6 boards. All sketches containing "Blink_Example" in their name are intended to run on the remote MCU. All sketches with "Monitor_Utility" in their name are intended to run on the host MCU.
+
+Remote MCU sketches all work on the same principle: Open the UART port connected to the nRF52832 add-on board and read/write/print to that port.
