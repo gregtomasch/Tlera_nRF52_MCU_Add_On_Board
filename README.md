@@ -8,4 +8,10 @@ The combination of ample numerical processing speed, rich I/O capability, very l
 ## How the Connectivity Works and Use Case Options 
 The add-on boards can be flashed to act as either a Peripheral or Central role BLE [Nordic UART Service](https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk52.v0.9.0%2Fgroup__ble__sdk__srv__nus.html) (NUS) device. The NUS characteristic turns out to be extremely useful for enabling BLE wireless connectivity; it acts as a simple BLE-UART bridge. If the nRF52832 receives data from a paired BLE NUS device, it simply relays that data to the MCU over a UART port. Conversely, data written from the MCU to the nRF52832 over the UART port is sent immediately to the paired BLE NUS device. So one could think of the NUS as a virtual "BLE Serial extension cable" connecting two UART ports... 
 
-There are a number of [NUS BLE Central role applications](https://learn.adafruit.com/bluefruit-le-connect-for-ios/ios-setup) for smart devices such as cell phones and tablet computers. It is simple to use the nRF5282 add-on in Peripheral role to stream serial data from an MCU to a Central role smart device. However, it has proven to be much harder to establish BLE connectivity with a PC. 
+There are a number of [NUS BLE Central role applications](https://learn.adafruit.com/bluefruit-le-connect-for-ios/ios-setup) for smart devices such as cell phones and tablet computers. It is simple to use the nRF5282 add-on in Peripheral role to stream serial data from an MCU to a Central role smart device. However, it has proven to be much harder to establish BLE connectivity between a remote MCU device a PC. This problem can be easily solved by using a second MCU development board and a Central role nRF5282 add-on:
+
+   * A serial bridge is made between the *remote* MCU device and a *Peripheral role* nRF5282 add-on
+   * A second serial bridge is made between a *second* MCU device and a *Central role* nRF5282 add-on. We'll call this second MCU the
+     *host*
+   * 
+   * The Central and Peripheral role add-ons pair and can exchage data between the remote 
