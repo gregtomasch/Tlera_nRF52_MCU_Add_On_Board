@@ -26,5 +26,5 @@ The example Arduino sketches in this repository include the necessary infrastruc
 
 OTA firmware update is fully functional for STL32L4-based devices but not for Teensy3.X products. At the time of writing this wiki, there is no known method for transferring firmware image data from an Arduino sketch to the bootable portion of the Teensy MCU's flash memory. If this capability were to be developed OTA firmware updates would be possible for the Teensy3.X products as well.
 
-##Software
-###Arduino Sketches.
+## Software
+### Arduino Sketches
