@@ -32,4 +32,4 @@ It is recommended to read the "STM32L4_BLE_Bridge_and_OTA_Wiki.pdf" document in 
 ### Arduino Sketches
 This repository contains example Arduino sketches for using the Tlera nRF52832 add-on boards on both "remote" and "host" MCU development boards. The sketches support "Dragonfly", "Butterfly" and Teensy3.X MCU products. The names should make it obvious which sketches support which boards. All sketches have been successfully tested with their respective products. The Teensy3.X sketches have been tested with the Teensy 3.2 and 3.6 boards. All sketches containing "Blink_Example" in their name are intended to run on the remote MCU. All sketches with "Monitor_Utility" in their name are intended to run on the host MCU.
 
-Remote MCU sketches all work on the same principle: Open the UART port connected to the nRF52832 add-on board and read/write/print to that port.
+Remote MCU sketches all work on the same principle: Open the UART port connected to the nRF52832 add-on board and read/write/print to that port will be handled over the BLE/NUS connection.
