@@ -20,4 +20,6 @@ There are a number of [NUS BLE Central role applications](https://learn.adafruit
    * Internal to the *host MCU's* programming, data exchanged to/from the BLE/UART bridge is passed from/to to host MCU's USB serial port and is avilable to any kind of serial terminal application on the PC
 
 ### Wireless Firmware Updates to Remote MCU Devices
-Having a BLE serial connection between remote MCU devices and a PC opens up another exciting possibility: Over-The-Air (OTA)
+Having a BLE serial connection between remote an MCU device and a PC opens up another exciting possibility: Over-The-Air (OTA) firmware updates for the remote MCU device. The BLE serial connection described above is bi-directional so there is no reason in principle why new firmware information can't be sent to a remote MCU. The Tlera MCU development boards support byte-by-byte writing of a new firmware image from an Arduino sketch directly to STM32L4's native flash memory. Once the new firmware image is completely written, a soft reset activates it. Using a Tlera Dragonfly board as the host MCU makes this process even easier. It is equipped with a 128Mbit QSPI flash chip that is mountable as a virtual disk drive. New MCU firmware can be built with the Arduino IDE, drag-and-drop copied to the Dragonfly's QSPI flash memory and transmitted to the remote MCU over the BLE NUS connection. 
+
+The example Arduino sketches include 
