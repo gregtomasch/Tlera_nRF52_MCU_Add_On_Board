@@ -29,8 +29,10 @@ OTA firmware update is fully functional for STL32L4-based devices but not for Te
 ## Step-by-Step Guide
 ### Set up Your Remote MCU
   * Select your MCU board (Dragonfly, Butterfly or Teensy3.X
-  * Get a Tlera nRF5282 add-on board flashed for *Peroiheral role*. (The add-on boards can be purchased with either Peripheral or Central role firmware)
+  * Get a Tlera nRF5282 add-on board flashed for *Peripheral role*. (The add-on boards can be purchased with either Peripheral or Central role firmware)
   * Connect the add-on board to the MCU board as ahown in the photos above
+  * Make sure that you have the proper version of Arduino and the correct core/libraries installed for either the [Tlera STM32L4](https://github.com/GrumpyOldPizza/arduino-STM32L4) or [Teensy3.X MCU](https://www.pjrc.com/teensy/td_download.html) board you have selected
+  * 
 
 ## Software Overview
 It is recommended to read the "STM32L4_BLE_Bridge_and_OTA_Wiki.pdf" document in this repository for instructions on how to use the Tlera nRF52832 add-on boards and software examples. Practical considerations of using both the Arduino MCU sketches and nRF52832 firmware are discussed there. This section will focus more on using the example sketches as an infrastructure to develop new BLE-connected Arduino applications and how to use the nRF52832 firmware source code in the Nordic SDK to make user-specific modifications.
