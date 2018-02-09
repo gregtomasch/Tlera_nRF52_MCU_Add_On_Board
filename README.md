@@ -1,4 +1,4 @@
-# Bring BLE Connectivity to Your Favorite MCU Development Board With Tlera nRF52832 Add-on Boards
+# Bring BLE Connectivity to Your Favorite MCU Development Board with Tlera nRF52832 Add-on Boards
 
 ## Background
 Microcontroller (MCU) development boards are widely used for many Internet of Things (IoT) applications. They are compact, powerful and highly versatile with a wide range of I/O capabilities. The PJRC Teensy3.X family of products are highly capable and very popular. These were some of the first MCU development boards that brought transformative performance to the IoT Maker community in small form factor and at a reasonable price. Tlera Corporation offers a [family of MCU development boards](https://www.tindie.com/stores/TleraCorp/) that were initially inspired by the Teensy3.2 but are based upon [ST Microelectronics' STM32L4 microcontroller.](http://www.st.com/content/ccc/resource/technical/document/reference_manual/02/35/09/0c/4f/f7/40/03/DM00083560.pdf/files/DM00083560.pdf/jcr:content/translations/en.DM00083560.pdf)![alt text](https://user-images.githubusercontent.com/5760946/35936194-677fc7dc-0bf7-11e8-8aba-164e4539fc1b.png)![alt text](https://user-images.githubusercontent.com/5760946/35936276-9dd7b4b6-0bf7-11e8-9f23-42b35ff0d7db.png)The STM32L4 is an 80MHz ARM Cortex M4 microcontroller with an embedded floating point unit and a very rich I/O portfolio. Like the Teensy3.X family, Tlera's MCU development boards are supported by a [mature Arduino core](https://github.com/GrumpyOldPizza/arduino-STM32L4) for easy application development. The differentiating advantage of the Tlera STM32L4-based MCU boards is low power sleep capability. State-preserving sleep modes can be easily implemented using the Arduino IDE and typically result in ~1.6uA current consumption. The STM32L4 can be woken up by either an external interrupt or periodically by using the internal RTC.
@@ -17,7 +17,7 @@ There are a number of [NUS BLE Central role applications](https://learn.adafruit
    * A second serial bridge is made between a *second* MCU device and a *Central role* nRF5282 add-on. We'll call this second MCU the
      *gateway*
    * The Central and Peripheral role add-ons pair and can exchange data between the *gateway* and *remote* MCU's
-   * Internal to the *gateway MCU's* programming, data exchanged to/from the BLE/UART bridge is passed from/to to gateway MCU's USB serial port and is available to any kind of serial terminal application on the PC
+   * Internal to the *gateway MCU's* programming, data exchanged to/from the BLE/UART bridge is passed from/to the gateway MCU's USB serial port and is available to any kind of serial terminal application on the PC
 
 ### Wireless Firmware Updates to Remote MCU Devices
 Having a BLE serial link between a remote MCU device and a PC opens up another exciting possibility: Over-The-Air (OTA) firmware updates for the remote MCU device. The BLE serial connection described above is bi-directional so there is no reason in principle why new firmware information can't be sent to a remote MCU. The Tlera MCU development boards support byte-by-byte writing of a new firmware image from an Arduino sketch directly to the STM32L4's native flash memory. Once the new firmware image is completely written, a soft reset activates it. Using a Tlera Dragonfly board as the gateway MCU makes this process even easier. It is equipped with a 128Mbit QSPI flash chip that is mountable as a virtual disk drive. New MCU firmware can be built with the Arduino IDE, drag-and-drop copied to the Dragonfly's QSPI flash memory and transmitted to the remote MCU over the BLE NUS connection. 
@@ -28,19 +28,35 @@ OTA firmware update is fully functional for STL32L4-based devices but not for Te
 
 ## Step-by-Step Guide
 ### Set up Your Remote MCU
-  * Select your MCU board (Dragonfly, Butterfly or Teensy3.X
-  * Get a Tlera nRF5282 add-on board flashed for *Peripheral role*. (The add-on boards can be purchased with either Peripheral or Central role firmware)
-  * Connect the add-on board to the MCU board as ahown in the photos above
-  * Make sure that you have the proper version of Arduino and the correct core/libraries installed for either the [Tlera STM32L4](https://github.com/GrumpyOldPizza/arduino-STM32L4) or [Teensy3.X](https://www.pjrc.com/teensy/td_download.html)MCU board you have selected
-  * 
+  * Select your MCU board (Dragonfly, Butterfly or Teensy3.X)
+  * Get a Tlera nRF5282 add-on board flashed for *Peripheral role*. (The add-on boards can be purchased with either Peripheral or Central role firmware pre-flashed)
+  * Connect the add-on board to the MCU board as shown in the photos above
+  * Make sure that you have the proper version of Arduino and the correct core/libraries installed for either the [Tlera STM32L4](https://github.com/GrumpyOldPizza/arduino-STM32L4) or [Teensy3.X](https://www.pjrc.com/teensy/td_download.html) MCU board you have selected
+  * Compile and upload the appropriate remote MCU test sketch for your board
+  * If you have a smart phone or tablet with a [BLE NUS terminal application,](https://itunes.apple.com/us/app/adafruit-bluefruit-le-connect/id830125974?mt=8) connect to you MCU and watch the remote data stream! When the NUS connection is active, the blue LED on the add-on board will come on steady
+  * If you want to use a gateway MCU to stream the remote data to your PC, go to the next section...
 
+### Set up Your Gateway MCU
+  * Select your MCU board (Dragonfly, Butterfly or Teensy3.X). If you want to do OTA firmware updates on a remote STM32L4 device, we recommend using the Tlera Dragonfly since it has built-in drag-and-drop access to mass memory
+  * Get a Tlera nRF5282 add-on board flashed for *Central role*. (The add-on boards can be purchased with either Peripheral or Central role firmware pre-flashed)
+  * Connect the add-on board to the MCU board as shown in the photos above
+  * Make sure that you have the proper version of Arduino and the correct core/libraries installed for either the [Tlera STM32L4](https://github.com/GrumpyOldPizza/arduino-STM32L4) or [Teensy3.X](https://www.pjrc.com/teensy/td_download.html) MCU board you have selected
+  * Compile and upload the appropriate gateway MCU test sketch for your board
+  * Power-cycle the gateway MCU/add-on board pair and open a USB serial monitor
+  * Power up a BLE-enabled remote MCU; you should see connection information posted the gateway MCU's USB serial monitor during the pairing process. When the NUS connection is active the blue LED's on both nRF52832 add-on boards should come on steady
+  * Data streaming in from the remote MCU will automatically appear on the serial monitor
+  * If you selected the Tlera Dragonfly for the gateway MCU and the remote device is either a Dragonfly or Butterfly, you can do OTA firmware updates
+    * Copy the new firmware image to the gateway Dragonfly's virtual flash drive
+    * Send a "1" from the serial monitor and watch it go!
+    * It should take about 2-10min to complete the update, depending on the firmware image size. Upon successful completion, the remote MCU will reboot and resume normal operation
+  
 ## Software Overview
 It is recommended to read the "STM32L4_BLE_Bridge_and_OTA_Wiki.pdf" document in this repository for instructions on how to use the Tlera nRF52832 add-on boards and software examples. Practical considerations of using both the Arduino MCU sketches and nRF52832 firmware are discussed there. This section will focus more on using the example sketches as an infrastructure to develop new BLE-connected Arduino applications and how to use the nRF52832 firmware source code in the Nordic SDK to make user-specific modifications.
 
 ### Arduino Sketches
 This repository contains example Arduino sketches for using the Tlera nRF52832 add-on boards on both "remote" and "gateway" MCU development boards. The sketches support "Dragonfly", "Butterfly" and Teensy3.X MCU products. The names should make it obvious which sketches support which boards. All sketches have been successfully tested with their respective products. The Teensy3.X sketches have been tested with the Teensy 3.2 and 3.6 boards. All sketches containing "Blink_Example" in their name are intended to run on the remote MCU. All sketches with "Monitor_Utility" in their name are intended to run on the host MCU.
 
-The most basic form of remote MCU sketches all work on the same principle: Open the UART port connected to the nRF52832 add-on board and read/write/print operations addressed to that port will be handled over the BLE/NUS connection. This is all that is required for the remote MCU device to send results to a tablet computer, smart phone or PC. It should be noted that BLE NUS data rates are fairly limited. As a practical matter, more than about 1kb/s may result in data loss. If OTA firmware update capability is desired, it is necessary to include a serial protocol and an OTA update handler. These are implemnted in "Host_WirelessSerial.cpp" and "BLE_OTA.cpp" respectively. The serial protocol is included in all examples but the OTA update handler is only in the STM42L4-related examples. The "WirelessSerial::serialCom()" MSP handler is called every cycle of the main loop to process incoming MSP messages. If a valid MSP message to initiate OTA firmware update is received, the "OTA::OTA_Update(OTA_Update_Size, OTA_Update_Blocks)" sub-loop handler is called to complete the update.
+The most basic form of remote MCU sketches all work on the same principle: Open the UART port connected to the nRF52832 add-on board and read/write/print operations addressed to that port will be handled over the BLE/NUS connection. This is all that is required for the remote MCU device to send results to a tablet computer, smart phone or PC. It should be noted that BLE NUS data rates are fairly limited. As a practical matter, more than about 1kb/s may result in data loss. If OTA firmware update capability is desired, it is necessary to include a serial protocol and an OTA update handler. These are implemented in "Host_WirelessSerial.cpp" and "BLE_OTA.cpp" respectively. The serial protocol is included in all examples but the OTA update handler is only in the STM42L4-related examples. The "WirelessSerial::serialCom()" MSP handler is called every cycle of the main loop to process incoming MSP messages. If a valid MSP message to initiate OTA firmware update is received, the "OTA::OTA_Update(OTA_Update_Size, OTA_Update_Blocks)" sub-loop handler is called to complete the update.
 
 Gateway MCU sketches are equally simple in concept: Check the UART port connected to the nRF52832 add-on board for incoming data each cycle of the main loop. As data is available, read each incoming byte and write it to the MCU's USB serial port. Conversely, the USB serial port can also be checked for incoming data which is then written to the BLE UART port. The STM32L4-related examples monitor the USB serial port for a specific incoming byte in order to call "flashFW()", the OTA firmware update handler. The Teensy3.X-related examples do not monitor data incoming on the USB serial port but it would be a simple matter to do so if desired.
 
