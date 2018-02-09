@@ -16,7 +16,7 @@ There are a number of [NUS BLE Central role applications](https://learn.adafruit
    * A serial bridge is made between the *remote* MCU device and a *Peripheral role* nRF5282 add-on
    * A second serial bridge is made between a *second* MCU device and a *Central role* nRF5282 add-on. We'll call this second MCU the
      *gateway*
-   * The Central and Peripheral role add-ons pair and can exchange data between the *remote* and *gateway* MCU's
+   * The Central and Peripheral role add-ons pair and can exchange data between the *gateway* and *remote* MCU's
    * Internal to the *gateway MCU's* programming, data exchanged to/from the BLE/UART bridge is passed from/to to gateway MCU's USB serial port and is available to any kind of serial terminal application on the PC
 
 ### Wireless Firmware Updates to Remote MCU Devices
