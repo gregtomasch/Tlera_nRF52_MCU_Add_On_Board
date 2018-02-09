@@ -26,7 +26,13 @@ The example Arduino sketches in this repository include the necessary infrastruc
 
 OTA firmware update is fully functional for STL32L4-based devices but not for Teensy3.X products. At the time of writing this wiki, there is no known method for transferring firmware image data from an Arduino sketch to the bootable portion of the Teensy MCU's flash memory. If this capability were to be developed OTA firmware updates would be possible for the Teensy3.X products as well.
 
-## Software
+## Step-by-Step Guide
+### Set up Your Remote MCU
+  * Select your MCU board (Dragonfly, Butterfly or Teensy3.X
+  * Get a Tlera nRF5282 add-on board flashed for *Peroiheral role*. (The add-on boards can be purchased with either Peripheral or Central role firmware)
+  * Connect the add-on board to the MCU board as ahown in the photos above
+
+## Software Overview
 It is recommended to read the "STM32L4_BLE_Bridge_and_OTA_Wiki.pdf" document in this repository for instructions on how to use the Tlera nRF52832 add-on boards and software examples. Practical considerations of using both the Arduino MCU sketches and nRF52832 firmware are discussed there. This section will focus more on using the example sketches as an infrastructure to develop new BLE-connected Arduino applications and how to use the nRF52832 firmware source code in the Nordic SDK to make user-specific modifications.
 
 ### Arduino Sketches
