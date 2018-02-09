@@ -31,7 +31,7 @@ OTA firmware update is fully functional for STL32L4-based devices but not for Te
   * Select your MCU board (Dragonfly, Butterfly or Teensy3.X
   * Get a Tlera nRF5282 add-on board flashed for *Peripheral role*. (The add-on boards can be purchased with either Peripheral or Central role firmware)
   * Connect the add-on board to the MCU board as ahown in the photos above
-  * Make sure that you have the proper version of Arduino and the correct core/libraries installed for either the [Tlera STM32L4](https://github.com/GrumpyOldPizza/arduino-STM32L4) or [Teensy3.X MCU](https://www.pjrc.com/teensy/td_download.html) board you have selected
+  * Make sure that you have the proper version of Arduino and the correct core/libraries installed for either the [Tlera STM32L4](https://github.com/GrumpyOldPizza/arduino-STM32L4) or [Teensy3.X](https://www.pjrc.com/teensy/td_download.html)MCU board you have selected
   * 
 
 ## Software Overview
