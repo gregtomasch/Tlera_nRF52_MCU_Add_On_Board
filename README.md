@@ -33,7 +33,7 @@ OTA firmware update is fully functional for STL32L4-based devices but not for Te
   * Connect the add-on board to the MCU board as shown in the photos above
   * Make sure that you have the proper version of Arduino and the correct core/libraries installed for either the [Tlera STM32L4](https://github.com/GrumpyOldPizza/arduino-STM32L4) or [Teensy3.X](https://www.pjrc.com/teensy/td_download.html) MCU board you have selected
   * Compile and upload the appropriate remote MCU test sketch for your board
-  * If you have a smart phone or tablet with a [BLE NUS terminal application,](https://itunes.apple.com/us/app/adafruit-bluefruit-le-connect/id830125974?mt=8) connect to you MCU and watch the remote data stream! When the NUS connection is active, the blue LED on the add-on board will come on steady
+  * If you have a smart phone or tablet with a [BLE NUS terminal application,](https://itunes.apple.com/us/app/adafruit-bluefruit-le-connect/id830125974?mt=8) connect to your MCU and watch the remote data stream! When the NUS connection is active, the blue LED on the add-on board will come on steadily
   * If you want to use a gateway MCU to stream the remote data to your PC, go to the next section...
 
 ### Set up Your Gateway MCU
@@ -43,7 +43,7 @@ OTA firmware update is fully functional for STL32L4-based devices but not for Te
   * Make sure that you have the proper version of Arduino and the correct core/libraries installed for either the [Tlera STM32L4](https://github.com/GrumpyOldPizza/arduino-STM32L4) or [Teensy3.X](https://www.pjrc.com/teensy/td_download.html) MCU board you have selected
   * Compile and upload the appropriate gateway MCU test sketch for your board
   * Power-cycle the gateway MCU/add-on board pair and open a USB serial monitor
-  * Power up a BLE-enabled remote MCU; you should see connection information posted the gateway MCU's USB serial monitor during the pairing process. When the NUS connection is active the blue LED's on both nRF52832 add-on boards should come on steady
+  * Power up a BLE-enabled remote MCU; you should see connection information posted to the gateway MCU's USB serial monitor during the pairing process. When the NUS connection is active the blue LED's on both nRF52832 add-on boards should come on steadily
   * Data streaming in from the remote MCU will automatically appear on the serial monitor
   * If you selected the Tlera Dragonfly for the gateway MCU and the remote device is either a Dragonfly or Butterfly, you can do OTA firmware updates
     * Copy the new firmware image to the gateway Dragonfly's virtual flash drive
