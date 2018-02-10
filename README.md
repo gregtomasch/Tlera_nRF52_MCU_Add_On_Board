@@ -46,7 +46,7 @@ OTA firmware update is fully functional for STL32L4-based devices but not for Te
   * Power up a BLE-enabled remote MCU; you should see connection information posted to the gateway MCU's USB serial monitor during the pairing process. When the NUS connection is active the blue LED's on both nRF52832 add-on boards should come on steadily
   * Data streaming in from the remote MCU will automatically appear on the serial monitor
   * If you selected the Tlera Dragonfly for the gateway MCU and the remote device is either a Dragonfly or Butterfly, you can do OTA firmware updates
-    * Copy the new firmware image to the gateway Dragonfly's virtual flash drive
+    * Copy the new firmware image to the gateway Dragonfly's [virtual flash drive](https://github.com/gregtomasch/Tlera_nRF52_MCU_Add_On_Board/blob/master/STM32L4_BLE_Bridge_and_OTA_Wiki.pdf)
     * Send a "1" from the serial monitor and watch it go!
     * It should take about 2-10min to complete the update, depending on the firmware image size. Upon successful completion, the remote MCU will reboot and resume normal operation
     * Detailed OTA firmware update instructions are in ["STM32L4_BLE_Bridge_and_OTA_Wiki.pdf"](https://github.com/gregtomasch/Tlera_nRF52_MCU_Add_On_Board/blob/master/STM32L4_BLE_Bridge_and_OTA_Wiki.pdf) located in the main folder of this repository.
