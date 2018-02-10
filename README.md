@@ -49,7 +49,7 @@ OTA firmware update is fully functional for STL32L4-based devices but not for Te
     * Copy the new firmware image to the gateway Dragonfly's virtual flash drive
     * Send a "1" from the serial monitor and watch it go!
     * It should take about 2-10min to complete the update, depending on the firmware image size. Upon successful completion, the remote MCU will reboot and resume normal operation
-    * Detailed OTA firmware update instructions are in "STM32L4_BLE_Bridge_and_OTA_Wiki.pdf" located in the main folder of this repository.
+    * Detailed OTA firmware update instructions are in ["STM32L4_BLE_Bridge_and_OTA_Wiki.pdf"](https://github.com/gregtomasch/Tlera_nRF52_MCU_Add_On_Board/blob/master/STM32L4_BLE_Bridge_and_OTA_Wiki.pdf) located in the main folder of this repository.
   
 ## Software Overview
 It is recommended to read the ["STM32L4_BLE_Bridge_and_OTA_Wiki.pdf" document in this repository](https://github.com/gregtomasch/Tlera_nRF52_MCU_Add_On_Board/blob/master/STM32L4_BLE_Bridge_and_OTA_Wiki.pdf) for instructions on how to use the Tlera nRF52832 add-on boards and software examples. Practical considerations of using both the Arduino MCU sketches and nRF52832 firmware are discussed there. This section will focus more on using the example sketches as an infrastructure to develop new BLE-connected Arduino applications and how to use the nRF52832 firmware source code in the Nordic SDK to make user-specific modifications.
